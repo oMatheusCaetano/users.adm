@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Phone extends Model
 {
     
     public $timestamps = false;
-    protected $fillable = ['name', 'cpf', 'email', 'password', 'address_id'];
+    protected $fillable = ['number', 'user_id'];
 }
