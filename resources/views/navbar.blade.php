@@ -18,21 +18,41 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="{{ route('users.index') }}">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">Meu Perfil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-danger" href="#">Sair</a>
-                        </li>
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="#">Novo Usuário</a>
+                            </li>
+                        @endauth
                     </ul>
                 </div>
+                @auth
+                <div class="dropdown show">
+                    <a class="text-secondary dropdown-toggle" href="#" role="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{ $logedUser->name }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">Perfil</a>
+                        <a class="dropdown-item text-danger" href="{{ route('login.logout') }}">Sair</a>
+                    </div>
+                </div>
+                @endauth
+                @guest
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-info" href="{{ route('login.index') }}">Entrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#">Registrar-se</a>
+                    </li>
+                </ul>
+                @endguest
             </div>
-            </nav>
+        </nav>
     </header>
     <section class="container">
         @yield('page_content')
