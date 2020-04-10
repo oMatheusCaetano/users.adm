@@ -6,6 +6,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/index', 'UsersController@index')->name('users.index');
+Route::get('/users', 'UsersController@index')->name('users.index');
 
-
+Route::get('/login', 'LoginController@index')->name('login.index');
