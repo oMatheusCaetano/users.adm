@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+
 class UsersController
 {
 
     public function index()
     {
-        return view('users.index');
+        $users = User::query()->orderBy('name')->get();       
+        return view('users.index', compact('users'));
     }
 }

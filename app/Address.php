@@ -10,4 +10,9 @@ class Address extends Model
     public $timestamps = false;
     protected $table = 'address';
     protected $fillable = ['street', 'city', 'state', 'number', 'neighborhood', 'zip', 'complement'];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

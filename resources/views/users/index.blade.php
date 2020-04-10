@@ -1,37 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Users | users.adm</title>
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light container">
-            <a class="navbar-brand" href="{{ route('users.index') }}">users<span class="text-primary">.adm</span></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ route('users.index') }}">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-dark" href="#">Meu Perfil</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-danger" href="#">Sair</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-    </header>
-    
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
-</html>
+@extends('navbar')
+
+@section('window_title') Usuários | users.adm @endsection
+@section('page_content')
+    <main>
+        <table class="table bg-white mt-2">
+            <thead class="">
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Endereço</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->cpf }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->phones->first()['number'] }}</td>
+                        <td>{{ $user->address['street'] . ', ' . $user->address['number'] }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </main> 
+@endsection
