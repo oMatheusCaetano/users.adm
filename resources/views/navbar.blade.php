@@ -10,7 +10,7 @@
 </head>
 <body class="bg-light">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('users.index') }}">
                     <img src="{{ asset('img/logo.png') }}" alt="u.a-logo" width="45" height="40">
@@ -26,13 +26,13 @@
                             </li>
                             @auth
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Novo Usuário</a>
+                                    <a class="nav-link" href="{{ route('users.create') }}">Novo Usuário</a>
                                 </li>
                             @endauth
                         </ul>
                     @auth
-                        <div class="dropdown show">
-                            <a class="text-secondary dropdown-toggle text-info" href="#" role="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle text-info" href="#" role="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ $logedUser->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="userDropdown">
@@ -57,6 +57,7 @@
     </header>
 
     <section class="container">
+        <h3 class="text-center mt-3 mb-4">@yield('page_title')</h3>
         @yield('page_content')
     </section>
 

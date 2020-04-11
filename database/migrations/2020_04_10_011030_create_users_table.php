@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('cpf')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->bigInteger('address_id')->unsigned();
+            $table->bigInteger('address_id')->unsigned()->nullable();
             $table->foreign('address_id')->references('id')->on('address');
         });
     }

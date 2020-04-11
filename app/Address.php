@@ -10,6 +10,9 @@ class Address extends Model
     public $timestamps = false;
     protected $table = 'address';
     protected $fillable = ['street', 'city', 'state', 'number', 'neighborhood', 'zip', 'complement'];
+    protected $attributes = [
+        'street' => ''
+    ];
 
     public function users()
     {
