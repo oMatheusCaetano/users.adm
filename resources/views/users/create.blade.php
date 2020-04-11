@@ -7,12 +7,12 @@
         <h5 class="text-center mb-3"><strong>Cadastrar Novo Usuário</strong></h5>
         @include('messages.errors', ['errors' => $errors])
         <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name">Nome</label>
             <input class="form-control" id="name" name="name" type="text" required>
         </div>        
         <div class="form-group">
             <label for="cpf">CPF</label>
-            <input class="form-control" id="cpf" name="cpf" type="text">
+            <input class="form-control" id="cpf" name="cpf" type="text" required>
         </div>
         <div class="form-group">
             <label for="email">E-mail</label>
@@ -29,7 +29,10 @@
         <h5 class="text-center text-secondary mt-5 m-2">Endereço</h5>
         <div class="form-group">
             <label for="zip">CEP</label>
-            <input class="form-control" id="zip" name="zip" type="text">
+            <div class="input-group">
+                <input class="form-control"  id="zip" name="zip" type="text" maxlength="10">
+                <input type="button" class="input-group-append btn btn-success btn-sm" value="Buscar CEP" onclick="searchByCep()">
+            </div>
         </div>
         <div class="form-group">
             <label for="street">Rua</label>
@@ -60,4 +63,6 @@
         </div>
     </form>
 </div>
+
+@include('users.js.create')
 @endsection

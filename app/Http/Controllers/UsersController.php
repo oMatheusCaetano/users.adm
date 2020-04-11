@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UsersFormRequest;
 use App\Services\UserCreator;
 use App\User;
 use Illuminate\Http\Request;
@@ -23,9 +24,9 @@ class UsersController
         return view('users.create', compact('logedUser'));
     }
 
-    public function store(Request $request, UserCreator $userCreator)
+    public function store(UsersFormRequest $usersFormRequest, UserCreator $userCreator)
     {
-        $data = $request->except('_token');
+        $data = $usersFormRequest->except('_token');
         $userCreator->storeUser($data);
         return redirect()->route('users.index');
     }
