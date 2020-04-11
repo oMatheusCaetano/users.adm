@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UsersFormRequest extends FormRequest
+class RegisterFormRequest extends FormRequest
 {
 
     public function authorize()
@@ -18,8 +18,7 @@ class UsersFormRequest extends FormRequest
             'name' => 'required|min:2',
             'cpf' => 'required|min:11|max:14',
             'email' => 'email:rfc,dns',
-            'password' => 'required|min:8',
-            'teste' => 'required'
+            'password' => 'required|confirmed|min:8',
         ];
     }
 
@@ -33,6 +32,7 @@ class UsersFormRequest extends FormRequest
             'cpf.max' => 'O campo \'cpf\' pode ter no máximo 14 caracteres',
             'password.required' => 'O campo \'senha\' é obrigatório',
             'password.min' => 'O campo \'senha\' precisa ter pelo menos 8 caracteres',
+            'password.confirmed' => 'O campo \'senha\' é diferente do campo \'Repetir Senha\'',
             'email.email' => 'O \'email\' precisa ser um endereço válido'
         ];
     }

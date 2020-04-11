@@ -47,7 +47,7 @@
                                 <a class="nav-link text-info" href="{{ route('login.index') }}">Entrar</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="#">Registrar-se</a>
+                                <a class="nav-link text-dark" href="{{ route('login.create') }}">Registrar-se</a>
                             </li>
                         </ul>
                     @endguest

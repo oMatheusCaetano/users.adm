@@ -11,22 +11,7 @@ class UserAuth extends Authenticatable
 
     protected $table = 'users';
     protected $fillable = ['name', 'cpf', 'email', 'password', 'address_id'];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    protected $hidden = ['password', 'remember_token',];
+    protected $casts = ['email_verified_at' => 'datetime',];
+    public $timestamps = false;
 }

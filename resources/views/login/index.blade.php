@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
                 <button class="btn btn-info">Entrar</button>
-                <button class="btn btn-secondary">Registrar-se</button>
+                <a class="btn btn-secondary text-white" href="{{ route('login.create') }}"">Registrar-se</a>
             </div>
         </form>
     </div>
