@@ -3,6 +3,7 @@
 @section('window_title') Usuários | users.adm @endsection
 @section('page_title') Home @endsection
 @section('page_content')
+    @include('messages.returnMessage')
     <table class="table bg-white mt-2 shadow-sm">
         <thead class="">
             <tr>
@@ -18,7 +19,6 @@
         <tbody>
             @foreach ($users as $user)
                 <tr>
-
                     <td>
                         <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#{{ 'row_' . $user->id }}">Dados</button>
                         <div class="modal fade" id="{{ 'row_' . $user->id }}" tabindex="-1" role="dialog">

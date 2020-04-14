@@ -12,35 +12,36 @@
             <input type="number" name="user_id" value="{{ $user->id }}" hidden>
             <div class="form-group">
                 <label for="name">Nome<span class="text-danger">*</span></label>
-                <input class="form-control" id="name" name="name" value="{{ $user->name }}" required>
+                <input class="form-control" id="name" name="name" value="{{ $user->name }}">
             </div>        
             <div class="form-group">
                 <label for="cpf">CPF<span class="text-danger">*</span></label>
-                <input class="form-control" id="cpf" name="cpf" value="{{ $user->cpf }}" required>
+                <input class="form-control" id="cpf" name="cpf" value="{{ $user->cpf }}">
             </div>
             <div class="form-group">
                 <label for="email">E-mail<span class="text-danger">*</span></label>
-                <input class="form-control" id="email" name="email" type="email" value="{{ $user->email }}" required>
+                <input class="form-control" id="email" name="email" type="email" value="{{ $user->email }}">
             </div>
             <div class="form-group">
                 <label for="birthDate">Nascimento</span></label>
                 <input class="form-control" id="birthDate" name="birthDate" type="date">
             </div>
             <div class="form-group" id="phones_box">
-                <label for="zip">Telefones</label>
+                <label>Telefones</label>
                 <input class="btn btn-info btn-sm" type="button" value="+" onclick="newPhoneField()">
                 <input class="form-control mb-2" name="phones[]" value="" hidden>
                 @foreach ($phones as $phone)
-                    <input class="form-control mb-2" name="phones[]" value="{{ $phone->number }}">
+                    <input class="form-control mb-2 phone" name="phones[]" value="{{ $phone->number }}">
                 @endforeach
+                <input class="form-control mb-2 phone" name="phones[]">
             </div>
             <div class="form-group">
                 <label for="password">Senha<span class="text-danger">*</span></label>
-                <input class="form-control" id="password" name="password" type="password" required>
+                <input class="form-control" id="password" name="password" type="password">
             </div>
             <div class="form-group">
                 <label for="password_confirmation">Repetir Senha<span class="text-danger">*</span></label>
-                <input class="form-control" id="password_confirmation" name="password_confirmation" type="password" required>
+                <input class="form-control" id="password_confirmation" name="password_confirmation" type="password">
             </div>   
             <h5 class="text-center text-secondary mt-5 m-2">Endereço</h5>
             <input type="number" name="address_id" value="{{ isset($address) ? $address->id : '' }}" hidden>
@@ -80,5 +81,6 @@
             </div>
         </form>
     </div>
-@include('users.js.create')
+    
+    @include('users.js.create')
 @endsection

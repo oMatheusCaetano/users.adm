@@ -9,15 +9,15 @@
             @include('messages.errors', ['errors' => $errors])
             <div class="form-group">
                 <label for="name">Nome<span class="text-danger">*</span></label>
-                <input class="form-control" id="name" name="name" type="text" required>
+                <input class="form-control" id="name" name="name" type="text">
             </div>
             <div class="form-group">
                 <label for="cpf">CPF<span class="text-danger">*</span></label>
-                <input class="form-control" id="cpf" name="cpf" type="text" required>
+                <input class="form-control" id="cpf" name="cpf" type="text">
             </div>
             <div class="form-group">
                 <label for="email">E-mail<span class="text-danger">*</span></label>
-                <input class="form-control" id="email" name="email" type="email" required>
+                <input class="form-control" id="email" name="email" type="email">
             </div>
             <div class="form-group">
                 <label for="birthDate">Nascimento</span></label>
@@ -25,11 +25,11 @@
             </div>
             <div class="form-group">
                 <label for="password">Senha<span class="text-danger">*</span></label>
-                <input class="form-control" id="password" name="password" type="password" required>
+                <input class="form-control" id="password" name="password" type="password">
             </div>
             <div class="form-group">
                 <label for="password_confirmation">Repetir Senha<span class="text-danger">*</span></label>
-                <input class="form-control" id="password_confirmation" name="password_confirmation" type="password" required>
+                <input class="form-control" id="password_confirmation" name="password_confirmation" type="password">
             </div>                                                                                                                                                           
             <div class="form-group">
                 <button class="btn btn-info">Registrar-se</button>

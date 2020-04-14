@@ -11,11 +11,12 @@ use App\Http\Requests\UsersFormRequest;
 class UsersController
 {
 
-    public function index()
+    public function index(Request $request)
     {
         $users = User::query()->get();
         $loggedUser = Auth::user();
-        return view('users.index', compact('users', 'loggedUser'));
+        $returnMessage = $request->session()->get('returnMessage');
+        return view('users.index', compact('users', 'loggedUser', 'returnMessage'));
     }
 
     public function create(Request $request)
@@ -32,6 +33,7 @@ class UsersController
         $addressData = $usersFormRequest->only('zip', 'street', 'number', 'complement', 'neighborhood', 'city', 'state');
         $phonesData = $usersFormRequest->only('phones')['phones'];
         $userCreator->store($userData, $phonesData, $addressData);
+        $usersFormRequest->session()->flash('returnMessage', "Usuário criado com sucesso.");
         return redirect()->route('users.index');
     }
 
@@ -40,7 +42,7 @@ class UsersController
         $loggedUser = Auth::user();
         $baseUser = User::find($loggedUser->id);
         $targetRoute =  'users.update';
-        return view('users.create', compact('loggedUser', 'baseUser', 'targetRoute'));
+        return view('users.edit', compact('loggedUser', 'baseUser', 'targetRoute'));
     }
 
     public function update(UsersFormRequest $usersFormRequest, UserCreator $userCreator)
@@ -50,6 +52,7 @@ class UsersController
         $addressData = $usersFormRequest->only('address_id', 'zip', 'street', 'number', 'complement', 'neighborhood', 'city', 'state');
         $phonesData = $usersFormRequest->only('phones')['phones'];
         $userCreator->update($id, $userData, $phonesData, $addressData);
+        $usersFormRequest->session()->flash('returnMessage', "Usuário atualizado com sucesso.");
         return redirect()->route('users.index');
     }
 }

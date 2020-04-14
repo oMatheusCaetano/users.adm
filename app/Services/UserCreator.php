@@ -4,12 +4,14 @@ namespace App\Services;
 
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserCreator
 {
 
     public function store(array $userData, array $phonesData, array $addressData): User
     {
+        $userData['password'] = Hash::make($userData['password']);
         DB::beginTransaction();
             $user = User::create($userData);
             $this->setPhones($user, $phonesData);
@@ -21,6 +23,7 @@ class UserCreator
     public function update(int $id, array $userData, array $phonesData, array $addressData): User
     {
         $user = User::find($id);
+        $userData['password'] = Hash::make($userData['password']);
         if (!is_null($user)) {
             DB::beginTransaction();
                 $user->update($userData);

@@ -22,7 +22,7 @@ function searchByCep() {
 
 function newPhoneField() {
     let phoneInput = document.createElement("input")
-    phoneInput.classList = 'form-control mb-1' 
+    phoneInput.classList = 'form-control mb-1 phone' 
     phoneInput.name = 'phones[]'
     document.getElementById("phones_box").appendChild(phoneInput)
 }
