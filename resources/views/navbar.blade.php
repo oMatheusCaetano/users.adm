@@ -20,36 +20,34 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                     <div class="collapse navbar-collapse justify-content-between col-7" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('users.index') }}">Home</a>
-                            </li>
-                            @auth
+                        @auth
+                            <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('users.create') }}">Novo Usuário</a>
+                                    <a class="nav-link" href="{{ route('users.index') }}">Home</a>
                                 </li>
-                            @endauth
-                        </ul>
-                    @auth
-                        <div class="dropdown">
-                            <a class="dropdown-toggle text-info" href="#" role="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ $loggedUser->name }}
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{ route('users.edit') }}">Perfil</a>
-                                <a class="dropdown-item text-danger" href="{{ route('login.logout') }}">Sair</a>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('users.create') }}">Novo Usuário</a>
+                                    </li>
+                            </ul>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle text-info" href="#" role="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ $loggedUser->name }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="{{ route('users.edit') }}">Perfil</a>
+                                    <a class="dropdown-item text-danger" href="{{ route('login.logout') }}">Sair</a>
+                                </div>
                             </div>
-                        </div>
-                    @endauth
-                    @guest
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link text-info" href="{{ route('login.index') }}">Entrar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="{{ route('register.index') }}">Registrar-se</a>
-                            </li>
-                        </ul>
+                        @endauth
+                        @guest
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link text-info" href="{{ route('login.index') }}">Entrar</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="{{ route('register.index') }}">Registrar-se</a>
+                                </li>
+                            </ul>
                     @endguest
                 </div>
             </div>

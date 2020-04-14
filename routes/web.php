@@ -6,15 +6,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users', 'UsersController@index')->name('users.index');
+Route::get('/users', 'UsersController@index')->name('users.index')->middleware('auth');
 
-Route::get('/users/create', 'UsersController@create')->name('users.create');
+Route::get('/users/create', 'UsersController@create')->name('users.create')->middleware('auth');
 
-Route::get('/users/edit', 'UsersController@edit')->name('users.edit');
+Route::get('/users/edit', 'UsersController@edit')->name('users.edit')->middleware('auth');
 
-Route::post('/users/store', 'UsersController@store')->name('users.store');
+Route::post('/users/store', 'UsersController@store')->name('users.store')->middleware('auth');
 
-Route::post('/users/update', 'UsersController@update')->name('users.update');
+Route::post('/users/update', 'UsersController@update')->name('users.update')->middleware('auth');
 
 Route::get('/login', 'LoginController@index')->name('login.index');
 
