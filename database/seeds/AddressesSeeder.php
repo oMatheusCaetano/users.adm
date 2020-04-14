@@ -3,14 +3,14 @@
 use App\Address;
 use Illuminate\Database\Seeder;
 
-class AddressSeeder extends Seeder
+class AddressesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Address::create([
             'street' => 'Rua 21 de Abril',

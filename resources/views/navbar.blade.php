@@ -33,10 +33,10 @@
                     @auth
                         <div class="dropdown">
                             <a class="dropdown-toggle text-info" href="#" role="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ $logedUser->name }}
+                            {{ $loggedUser->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">Perfil</a>
+                                <a class="dropdown-item" href="{{ route('users.edit') }}">Perfil</a>
                                 <a class="dropdown-item text-danger" href="{{ route('login.logout') }}">Sair</a>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                                 <a class="nav-link text-info" href="{{ route('login.index') }}">Entrar</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="{{ route('login.create') }}">Registrar-se</a>
+                                <a class="nav-link text-dark" href="{{ route('register.index') }}">Registrar-se</a>
                             </li>
                         </ul>
                     @endguest

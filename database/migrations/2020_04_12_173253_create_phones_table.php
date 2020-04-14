@@ -14,9 +14,10 @@ class CreatePhonesTable extends Migration
     public function up()
     {
         Schema::create('phones', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('number')->nullable();
-            $table->bigInteger('user_id');
+            $table->id();
+            $table->string('number');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -27,6 +28,8 @@ class CreatePhonesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('phones');
+        Schema::table('phones', function (Blueprint $table) {
+            Schema::dropIfExists('phones');
+        });
     }
 }

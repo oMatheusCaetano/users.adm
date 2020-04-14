@@ -2,6 +2,7 @@
 
 function searchByCep() {
     let zip = document.getElementById('zip').value
+    if (zip.length < 8) alert('CEP Inválido')
     let streetField = document.getElementById('street')
     let complementField = document.getElementById('complement')
     let neighborhoodField = document.getElementById('neighborhood')
@@ -17,6 +18,13 @@ function searchByCep() {
             cityField.value = json.localidade
             stateField.value = json.uf
         })
+}
+
+function newPhoneField() {
+    let phoneInput = document.createElement("input")
+    phoneInput.classList = 'form-control mb-1' 
+    phoneInput.name = 'phones[]'
+    document.getElementById("phones_box").appendChild(phoneInput)
 }
 
 </script>

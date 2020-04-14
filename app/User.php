@@ -8,7 +8,7 @@ class User extends Model
 {
     
     public $timestamps = false;
-    protected $fillable = ['name', 'cpf', 'email', 'password', 'address_id'];
+    protected $fillable = ['name', 'cpf', 'birthDate', 'email', 'password', 'address_id'];
 
     public function phones()
     {

@@ -2,32 +2,52 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UsersFormRequest;
-use App\Services\UserCreator;
 use App\User;
 use Illuminate\Http\Request;
+use App\Services\UserCreator;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UsersFormRequest;
 
 class UsersController
 {
 
     public function index()
     {
-        $users = User::query()->orderBy('name')->get();
-        $logedUser = Auth::user();
-        return view('users.index', compact('users', 'logedUser'));
+        $users = User::query()->get();
+        $loggedUser = Auth::user();
+        return view('users.index', compact('users', 'loggedUser'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        $logedUser = Auth::user();
-        return view('users.create', compact('logedUser'));
+        $loggedUser = Auth::user();
+        $currentRoute = $request->route()->getName();
+        $targetRoute =  'users.store';
+        return view('users.create', compact('loggedUser', 'currentRoute', 'targetRoute'));
     }
 
     public function store(UsersFormRequest $usersFormRequest, UserCreator $userCreator)
     {
         $data = $usersFormRequest->except('_token');
-        $userCreator->storeUser($data);
+        $userCreator->store($data);
+        return redirect()->route('users.index');
+    }
+
+    public function edit(Request $request)
+    {
+        $loggedUser = Auth::user();
+        $baseUser = User::find($loggedUser->id);
+        $targetRoute =  'users.update';
+        return view('users.create', compact('loggedUser', 'baseUser', 'targetRoute'));
+    }
+
+    public function update(UsersFormRequest $usersFormRequest, UserCreator $userCreator)
+    {
+        $id = $usersFormRequest->user_id;
+        $userData = $usersFormRequest->only('name', 'cpf', 'email', 'birthDate', 'password');
+        $addressData = $usersFormRequest->only('address_id', 'zip', 'street', 'number', 'complement', 'neighborhood', 'city', 'state');
+        $phonesData = $usersFormRequest->only('phones')['phones'];
+        $userCreator->update($id, $userData, $phonesData, $addressData);
         return redirect()->route('users.index');
     }
 }

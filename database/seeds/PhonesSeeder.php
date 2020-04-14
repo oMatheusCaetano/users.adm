@@ -3,7 +3,7 @@
 use App\Phone;
 use Illuminate\Database\Seeder;
 
-class PhoneSeeder extends Seeder
+class PhonesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -34,17 +34,12 @@ class PhoneSeeder extends Seeder
 
         Phone::create([
             'number' => '(62) 91234-2532',
-            'user_id' => '5'
+            'user_id' => '4'
         ]);
 
         Phone::create([
             'number' => '(62) 98888-2222',
             'user_id' => '4'
-        ]);
-
-        Phone::create([
-            'number' => '(62) 98999-2222',
-            'user_id' => '3'
         ]);
     }
 }
