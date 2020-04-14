@@ -28,8 +28,10 @@ class UsersController
 
     public function store(UsersFormRequest $usersFormRequest, UserCreator $userCreator)
     {
-        $data = $usersFormRequest->except('_token');
-        $userCreator->store($data);
+        $userData = $usersFormRequest->only('name', 'cpf', 'email', 'birthDate', 'password');
+        $addressData = $usersFormRequest->only('zip', 'street', 'number', 'complement', 'neighborhood', 'city', 'state');
+        $phonesData = $usersFormRequest->only('phones')['phones'];
+        $userCreator->store($userData, $phonesData, $addressData);
         return redirect()->route('users.index');
     }
 
