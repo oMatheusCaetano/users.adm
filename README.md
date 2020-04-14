@@ -1,5 +1,5 @@
 # USERS.ADM
-Este projeto foi desenvoldido para solucinar uma das provas disponibilizadas pela [Soluti](https://www.soluti.com.br).
+Este projeto foi desenvoldido para solucionar uma das provas disponibilizadas pela [Soluti](https://www.soluti.com.br).
 
 ## Stack utilizada
 - [PHP](https://www.php.net/)
