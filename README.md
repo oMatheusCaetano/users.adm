@@ -33,6 +33,11 @@ DB_PASSWORD=
 ```
 Antes de rodar a aplicação é preciso que um banco de dados seja previamente criado com o mesmo nome da variável ***DB_DATABASE***.
 
+Para realizar a criação das tabelas no banco:
+```sh
+php artisan migrate
+```
+
 Existem também algumas *seeds* previamente criadas que irão inserir dados automaticamente no banco de dados. Para popular o banco com estes dados basta rodar o comando:
 ```sh
 php artisan db:seed
